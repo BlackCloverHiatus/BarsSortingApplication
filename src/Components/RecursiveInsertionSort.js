@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import BarsHolder from "./BarsHolder";
+import { defaultColor } from "../constants/color";
 import useTimeOutFunction from "./useTimeOutFunction";
 
 const RecursiveInsertionSort = (props) => {
   const [anotherArray, setAnotherArray] = useState([10, 7, 8, 6, 9]);
   const [barState, setBarState] = useState([
-    { id: 1, value: 4 },
-    { id: 2, value: 5 },
-    { id: 3, value: 1 },
-    { id: 4, value: 2 },
-    { id: 5, value: 3 },
+    { id: 1, value: 4, color: defaultColor },
+    { id: 2, value: 5, color: defaultColor },
+    { id: 3, value: 1, color: defaultColor },
+    { id: 4, value: 2, color: defaultColor },
+    { id: 5, value: 3, color: defaultColor },
   ]);
-  console.log(anotherArray);
   // //console.log(myArray);
   // const insertionSort = (array, n) => {
   //   if (n <= 1) {
@@ -48,8 +48,10 @@ const RecursiveInsertionSort = (props) => {
     if (numberOfElements <= 1) {
       return;
     } else {
-      insertionSort2(mappedValues, numberOfElements - 1, barObjects);
-
+      for (let i = 0; i < numberOfElements; i++) {
+        insertionSort2(mappedValues, numberOfElements - 1, barObjects);
+        await timer(250);
+      }
       let current = mappedValues[numberOfElements - 1];
       let arrayChecker = numberOfElements - 2;
 
@@ -60,31 +62,31 @@ const RecursiveInsertionSort = (props) => {
       mappedValues[arrayChecker + 1] = current;
       //console.log(myArray);
       //console.log(anotherArray);
-      console.log(mappedValues);
 
       //this is where I should setState
       //create array element nung bar, which is sorted na
       //mappedValues is mapBarState
       //Maraming salamat, Kuya Monchit!
       const temporaryArray = [];
-      setBarState(temporaryArray);
 
       for (const element of mappedValues) {
         //for each element ng nasa array, so di ka lalagpas talaga sa laman ng array na which is 5 elements
         //await timer(1000);
-        console.log("reminder " + element);
         const object = barObjects.find((obj) => {
           return obj.value === element;
         });
         temporaryArray.push(object);
-        console.log(object);
       }
+
+      setBarState(temporaryArray);
+      console.log("setting State", temporaryArray);
     }
+
     //setBarState dito sa sampleArray
   };
 
-  const handleSorting = (anArray) => {
-    const barStateCopy = [...anArray];
+  const handleSorting = () => {
+    const barStateCopy = [...barState];
 
     const mapBarState = barStateCopy.map((e) => {
       return e.value;

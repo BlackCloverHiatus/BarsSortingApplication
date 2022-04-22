@@ -2,12 +2,13 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
 const Bar = (props) => {
+  //import color stuff here from props
   return (
     <div
       style={{
         width: "100px",
         height: `${100 * props.value}px`,
-        backgroundColor: "#FFE598",
+        backgroundColor: props.barColor,
         textAlign: "center",
         paddingLeft: "40px",
       }}

@@ -6,10 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import BarsHolder from "./Components/BarsHolder";
 import "bootstrap/dist/css/bootstrap.css";
 import RecursiveInsertionSort from "./Components/RecursiveInsertionSort";
+import InsertionSortReworked from "./Components/InsertionSortReworked";
+import InsertionSortReworked2 from "./Components/InsertionSortReworked2";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecursiveInsertionSort></RecursiveInsertionSort>
+    <InsertionSortReworked2 />
   </React.StrictMode>,
   document.getElementById("root")
 );

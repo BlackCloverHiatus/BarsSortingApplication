@@ -59,7 +59,12 @@ const BarsHolder = (props) => {
           className="d-flex justify-content-center align-middle d-flex align-items-end"
         >
           {props.barState.map((bar) => (
-            <Bar key={bar.id} id={bar.id} value={bar.value}></Bar>
+            <Bar
+              key={bar.id}
+              id={bar.id}
+              value={bar.value}
+              barColor={bar.color}
+            ></Bar>
           ))}
         </div>
         <div style={{ position: "fixed", top: "95%", left: "50%" }}>
@@ -72,7 +77,7 @@ const BarsHolder = (props) => {
               fontSize: "30px",
             }}
             className="btn btn-secondary"
-            onClick={() => props.onSorting(props.barState)}
+            onClick={() => props.onSorting()}
           >
             Sort
           </button>
